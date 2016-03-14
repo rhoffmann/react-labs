@@ -21,8 +21,8 @@ this is an experimenting space for the react ecosystem
 - [React/Redux Links](https://github.com/markerikson/react-redux-links)
 - [Removing Interface Complexity](http://jlongster.com/Removing-User-Interface-Complexity,-or-Why-React-is-Awesome)
 - [Testing in React: Getting Off The Ground](https://medium.com/javascript-inside/testing-in-react-getting-off-the-ground-5f569f3088a#.1mvol6prl)
-- [Geeky Animations with SVG / React /D3] (http://swizec.com/blog/animating-with-react-redux-and-d3/swizec/6775)
-
+- [Geeky Animations with SVG / React /D3](http://swizec.com/blog/animating-with-react-redux-and-d3/swizec/6775)
+- [SurviveJS](https://leanpub.com/survivejs_webpack_react)
 
 *Egghead Videos*
 
