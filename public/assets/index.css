@@ -1,0 +1,26 @@
+.active {
+    color: #40a070;
+}
+
+.nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav a {
+    text-decoration: none;
+}
+
+.page-content {
+    margin-top: 40px;
+}
+
+.message {
+    font-family: Monospaced;
+    padding: 1em;
+}
+
+.message--error {
+    border: 1px solid red;
+}
