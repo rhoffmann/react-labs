@@ -1,18 +1,41 @@
-React Router Tutorial
-=====================
+React Labs
+==========
 
-Quick lessons for getting up-to-speed with React Router.
+this is now empty as you can see
 
-See [01-setting-up.md](/lessons/01-setting-up.md) to get started.
+## References for Articles and Tutorials
 
-Each lesson has a commit for the final code so you can `git checkout
-<previous lesson final sha>` before starting a new one if you'd like.
+- [State of the Art JavaScript in 2016](https://medium.com/javascript-and-opinions/state-of-the-art-javascript-in-2016-ab67fc68eb0b#.f8ck0vkik)
+- [React Howto](https://github.com/petehunt/react-howto)
+- [React/Redux Links](https://github.com/markerikson/react-redux-links)
+- [Removing Interface Complexity](http://jlongster.com/Removing-User-Interface-Complexity,-or-Why-React-is-Awesome)
+- [Testing in React: Getting Off The Ground](https://medium.com/javascript-inside/testing-in-react-getting-off-the-ground-5f569f3088a#.1mvol6prl)
 
-Missing stuff that will come eventually, hopefully ... maybe.
+*Egghead Videos*
 
-1. an app that isn't completely pointless
-- egghead.io videos
-- code splitting
-- location state
-- data integration
+- [Getting Started with Redux](https://egghead.io/series/getting-started-with-redux)
+- 
 
+## TODO
+
+Set up Gulp: (i do not like to sass-loader and asset-loader with webpack)
+
+[] Gulp for static assets 
+[] Gulp: sass compilation, PostCSS / CSSNext
+[] Gulp-Webpack Integration
+
+#### Libraries:
+
+[] [react]()
+[] [react-router](https://github.com/reactjs/react-router)
+[] [react-reselect](https://github.com/reactjs/reselect)
+[] [redux](http://redux.js.org/) for application state and reducer
+[] [axios](https://github.com/mzabriskie/axios) for async requests
+
+#### Testing
+
+[] [mocha], with [webpack/mocha-loader](https://github.com/webpack/mocha-loader)
+[] [ava](https://github.com/sindresorhus/ava)
+
+#### UI
+[] [react-material-ui](http://www.material-ui.com/#/get-started/prerequisites)
