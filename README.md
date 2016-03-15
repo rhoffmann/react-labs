@@ -29,6 +29,8 @@ this is an experimenting space for the react ecosystem
 
 - [Getting Started with Redux](https://egghead.io/series/getting-started-with-redux)
 - [React Fundamentals](https://egghead.io/series/react-fundamentals) 
+- [Introduction to Reactive Programming](https://egghead.io/series/introduction-to-reactive-programming)
+- [Step-by-step Async JS with RxJS](https://egghead.io/series/step-by-step-async-javascript-with-rxjs)
 
 ### TODO
 
@@ -44,11 +46,13 @@ Set up Gulp: (i do not like to sass-loader and asset-loader with webpack)
 - [ ] [react-reselect](https://github.com/reactjs/reselect)
 - [ ] [redux](http://redux.js.org/) for application state and reducer
 - [ ] [axios](https://github.com/mzabriskie/axios) for async requests
+- [ ] [rxjs]()
 
 #### Testing
 
 - [ ] [mocha], with [webpack/mocha-loader](https://github.com/webpack/mocha-loader)
 - [ ] [ava](https://github.com/sindresorhus/ava)
-- [ ] [tape]
+- [ ] [tape](https://github.com/substack/tape)
+
 #### UI
 - [ ] [react-material-ui](http://www.material-ui.com/#/get-started/prerequisites)
