@@ -7,7 +7,7 @@ import compression from 'compression';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
-import routes from './app/routes';
+import routes from './source/routes';
 
 // le server
 
