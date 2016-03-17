@@ -24,6 +24,7 @@ this is an experimenting space for the react ecosystem
 - [Tape Testing](https://medium.com/javascript-scene/why-i-use-tape-instead-of-mocha-so-should-you-6aa105d8eaf4#.38yns5gbx)
 - [Geeky Animations with SVG / React /D3](http://swizec.com/blog/animating-with-react-redux-and-d3/swizec/6775)
 - [SurviveJS](https://leanpub.com/survivejs_webpack_react)
+- [Securing React/Redux Apps with JWT](https://medium.com/@rajaraodv/securing-react-redux-apps-with-jwt-tokens-fcfe81356ea0#.47t0kle4w)
 
 *Egghead Videos*
 
@@ -44,6 +45,8 @@ Set up Gulp: (i do not like to sass-loader and asset-loader with webpack)
 - [x] [react]()
 - [ ] [react-router](https://github.com/reactjs/react-router)
 - [ ] [react-reselect](https://github.com/reactjs/reselect)
+- [ ] [react-hyperscript](https://github.com/mlmorg/react-hyperscript) (no JSX)
+- [ ] [react-hyperscript-helpers](https://www.npmjs.com/package/react-hyperscript-helpers)
 - [ ] [redux](http://redux.js.org/) for application state and reducer
 - [ ] [axios](https://github.com/mzabriskie/axios) for async requests
 - [ ] [rxjs]()
