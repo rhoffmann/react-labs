@@ -1,6 +1,6 @@
 import React from 'react';
 import reqwest from 'reqwest';
-import Message from './Message';
+import Message from '../global/Message';
 
 export default React.createClass({
   propTypes: {
@@ -34,6 +34,7 @@ export default React.createClass({
       type: 'json',
       method: 'get'
     }).then((resp) => {
+      console.dir(resp);
       this.setState({
         repoData: resp
       });
@@ -59,6 +60,9 @@ export default React.createClass({
         { errorMessage }
         <div className="repo-data">
           <a href={ repo.html_url }>{ repo.full_name }</a>
+          <div>{repo.description}</div>
+          <div>{repo.ssh_url}</div>
+          <div>{repo.language}</div>
         </div>
       </div>
     );

@@ -1,22 +1,23 @@
 import React from 'react';
-import {
-  Router,
-  Route,
-  browserHistory,
-  IndexRoute
-} from 'react-router';
+import { Route, IndexRoute, Redirect } from 'react-router';
 import App from './modules/App';
-import Home from './modules/Home';
-import About from './modules/About';
-import Repos from './modules/Repos';
-import Repo from './modules/Repo';
+import Home from './modules/pages/Home';
+import About from './modules/pages/About';
+import RepositoryNavigator from './modules/repositories/RepositoryNavigator';
+import RepositoryListContainer from './modules/repositories/RepositoryListContainer';
+import Repository from './modules/repositories/Repository';
 
-module.exports = (
+export default (
   <Route path="/" component={App}>
     <IndexRoute component={Home} />
-    <Route path="/repos" component={Repos}>
-      <Route path="/repos/:userName/:repoName" component={Repo} />
+    <Redirect from="/repositories/*" to="/repos" />
+    <Route path="/repos" component={RepositoryNavigator}>
+      <Route path=":userName" component={RepositoryListContainer}>
+        <Route path=":repoName" component={Repository} />
+      </Route>
     </Route>
     <Route path="/about" component={About} />
   </Route>
 );
+
+// <IndexRoute components={ { list: RepositoryList, detail: Repository } } />
