@@ -3,6 +3,9 @@ React Labs
 
 this is an experimenting space for the react ecosystem
 
+## TODO
+
+- [ ] refactor github fetching / caching logic inside container components in common functionality, this all works very similar.
 
 ## Starting Up
 
