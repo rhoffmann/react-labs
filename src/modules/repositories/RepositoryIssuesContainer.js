@@ -1,33 +1,37 @@
 import React from 'react';
 import reqwest from 'reqwest';
 import { compose, composeWithPromise } from 'react-komposer';
-import RepositoryList from './RepositoryList';
+import RepositoryIssues from './RepositoryIssues';
 import Spinner from '../global/Spinner';
 import LoadingError from '../global/LoadingError';
 
-const reposCache = {};
+const cache = {};
 
 const onPropsChange = (props) => {
   const userName = props.params.userName;
+  const repoName = props.params.repoName;
+  const cacheKey = `${userName}/${repoName}`;
 
   return new Promise((resolve, reject) => {
-    const resolveWithCache = (user) => {
+    const resolveWithCache = (key) => {
+      console.log('issues cache', cache[ key ]);
       return resolve({
-        userName: user,
-        repositories: reposCache[ user ]
+        issues: cache[ key ],
+        repoName,
+        userName
       });
     };
 
-    if (reposCache[ userName ]) {
-      resolveWithCache(userName);
+    if (cache[ cacheKey ]) {
+      resolveWithCache(cacheKey);
     } else {
       reqwest({
-        url: `https://api.github.com/users/${userName}/repos`,
+        url: `https://api.github.com/repos/${userName}/${repoName}/issues`,
         type: 'json',
         method: 'get'
       }).then((resp) => {
-        reposCache[ userName ] = resp;
-        resolveWithCache(userName);
+        cache[ cacheKey ] = resp;
+        resolveWithCache(cacheKey);
       }, (err, msg) => {
         const errMsg = JSON.parse(err.response).message;
         reject(new Error(`${err.status}: ${errMsg}`));
@@ -36,13 +40,13 @@ const onPropsChange = (props) => {
   });
 };
 
-const MySpinner = () => (<Spinner text="Loading Repositories..." />);
+const MySpinner = () => (<Spinner text="Loading Issues..." />);
 
-const RepositoryListContainer = composeWithPromise(
+const RepositoryIssuesContainer = composeWithPromise(
   onPropsChange,
   MySpinner,
   LoadingError
   // { pure: true }
-)(RepositoryList);
+)(RepositoryIssues);
 
-export default RepositoryListContainer;
+export default RepositoryIssuesContainer;

@@ -1,7 +1,7 @@
 import React from 'react';
 import reqwest from 'reqwest';
 import { composeWithPromise } from 'react-komposer';
-import Repository from './Repository';
+import RepositoryData from './RepositoryData';
 import Spinner from '../global/Spinner';
 import LoadingError from '../global/LoadingError';
 
@@ -32,7 +32,8 @@ const onPropsChange = (props) => {
         reposCache[ cacheKey ] = resp;
         resolveWithCache(cacheKey);
       }, (err, msg) => {
-        reject(new Error(err.status));
+        const errMsg = JSON.parse(err.response).message;
+        reject(new Error(`${err.status}: ${errMsg}`));
       }).catch((reason) =>
         reject(new Error(reason))
       );
@@ -42,6 +43,10 @@ const onPropsChange = (props) => {
 
 const MySpinner = () => (<Spinner text="Loading Repo..." />);
 
-const RepositoryContainer = composeWithPromise(onPropsChange, MySpinner, LoadingError)(Repository);
+const RepositoryDataContainer = composeWithPromise(
+  onPropsChange,
+  MySpinner,
+  LoadingError
+)(RepositoryData);
 
-export default RepositoryContainer;
+export default RepositoryDataContainer;
