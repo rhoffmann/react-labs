@@ -1,0 +1,17 @@
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "rules": {
+    "comma-dangle": 0,
+    "no-console": 0,
+    "computed-property-spacing": [2, "always"],
+    "arrow-body-style": [0, "as-needed"],
+    "no-unused-vars": [0, { "args": "after-used", "vars": "all" }],
+    "no-param-reassign": [2, { "props": false }],
+    "react/prefer-es6-class": 0
+  },
+  "ecmaFeatures": {
+  },
+  "globals": {
+  }
+}

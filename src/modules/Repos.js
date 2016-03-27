@@ -1,8 +1,11 @@
-import React from 'react'
-import NavLink from './NavLink'
-import { browserHistory } from 'react-router'
+import React from 'react';
+import NavLink from './NavLink';
 
 export default React.createClass({
+
+  propTypes: {
+    children: React.PropTypes.object
+  },
 
   contextTypes: {
     router: React.PropTypes.object
@@ -10,8 +13,8 @@ export default React.createClass({
 
   handleSubmit(event) {
     event.preventDefault();
-    const userName = event.target.elements[0].value;
-    const repo = event.target.elements[1].value;
+    const userName = event.target.elements[ 0 ].value;
+    const repo = event.target.elements[ 1 ].value;
 
     if (repo === '' || userName === '') {
       return false;
@@ -19,8 +22,10 @@ export default React.createClass({
 
     const path = `/repos/${userName}/${repo}`;
 
-    //browserHistory.push(path); // var 1, simple browser history push
+    // browserHistory.push(path); // var 1, simple browser history push
     this.context.router.push(path); // var 2, recognize context
+
+    return true;
   },
 
   render() {
@@ -33,8 +38,8 @@ export default React.createClass({
           <li><NavLink to="/repos/rhoffmann/triactify">Triactify</NavLink></li>
           <li>
             <form onSubmit={this.handleSubmit}>
-              <input type="text" placeholder="userName"/> / {' '}
-              <input type="text" placeholder="repo"/>{' '}
+              <input type="text" placeholder="userName" /> / {' '}
+              <input type="text" placeholder="repo" />{' '}
               <button type="submit">Go</button>
             </form>
           </li>
@@ -44,6 +49,6 @@ export default React.createClass({
           { this.props.children }
         </div>
       </div>
-    )
+    );
   }
-})
+});

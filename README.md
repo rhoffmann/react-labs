@@ -29,10 +29,9 @@ this is an experimenting space for the react ecosystem
 - [Geeky Animations with SVG / React /D3](http://swizec.com/blog/animating-with-react-redux-and-d3/swizec/6775)
 - [SurviveJS](https://leanpub.com/survivejs_webpack_react)
 - [Securing React/Redux Apps with JWT](https://medium.com/@rajaraodv/securing-react-redux-apps-with-jwt-tokens-fcfe81356ea0#.47t0kle4w)
-
 - [Introducing Le lab with “Monod”, our Markdown Editor](https://tailordev.fr/blog/2016/03/11/introducing-le-lab-with-monod-our-markdown-editor/)
 - [Le Lab, Loading React Components Async](https://tailordev.fr/blog/2016/03/17/loading-dependencies-asynchronously-in-react-components/)
-
+- [Full Stack React/Redux Tutorial](http://teropa.info/blog/2015/09/10/full-stack-redux-tutorial.html)
 
 *Egghead Videos*
 
@@ -40,7 +39,6 @@ this is an experimenting space for the react ecosystem
 - [React Fundamentals](https://egghead.io/series/react-fundamentals) 
 - [Introduction to Reactive Programming](https://egghead.io/series/introduction-to-reactive-programming)
 - [Step-by-step Async JS with RxJS](https://egghead.io/series/step-by-step-async-javascript-with-rxjs)
-
 
 
 ### TODO

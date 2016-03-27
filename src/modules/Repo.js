@@ -1,36 +1,18 @@
-import React from 'react'
-import reqwest from 'reqwest'
-import Message from './Message'
-import PureRenderMixin from 'react-addons-pure-render-mixin'
-
+import React from 'react';
+import reqwest from 'reqwest';
+import Message from './Message';
 
 export default React.createClass({
-  mixins: [PureRenderMixin],
+  propTypes: {
+    // userName: React.PropTypes.string,
+    // repoName: React.PropTypes.string,
+    params: React.PropTypes.object
+  },
 
   getInitialState() {
     return {
-      repoData : {}
-    }
-  },
-
-  fetchRepoData(params) {
-
-    // TODO: cache request by userName and repoName params
-
-    return reqwest({
-      url: `https://api.github.com/repos/${params.userName}/${params.repoName}`,
-      type: 'json',
-      method: 'get'
-    }).then( (resp) => {
-      this.setState({
-        repoData: resp
-      })
-    }, (err, msg) => {
-      this.setState({
-        error: err,
-        message: JSON.parse(err.response).message || msg
-      })
-    });
+      repoData: {}
+    };
   },
 
   componentWillMount() {
@@ -42,11 +24,28 @@ export default React.createClass({
   },
 
   componentWillUnmount() {
-    //this.fetchRequest.cancel();
+    // this.fetchRequest.cancel();
+  },
+
+  fetchRepoData(params) {
+    // TODO: cache request by userName and repoName params
+    return reqwest({
+      url: `https://api.github.com/repos/${params.userName}/${params.repoName}`,
+      type: 'json',
+      method: 'get'
+    }).then((resp) => {
+      this.setState({
+        repoData: resp
+      });
+    }, (err, msg) => {
+      this.setState({
+        error: err,
+        message: JSON.parse(err.response).message || msg
+      });
+    });
   },
 
   render() {
-
     const repo = this.state.repoData;
     let errorMessage = '';
 
@@ -62,6 +61,6 @@ export default React.createClass({
           <a href={ repo.html_url }>{ repo.full_name }</a>
         </div>
       </div>
-    )
+    );
   }
-})
+});
