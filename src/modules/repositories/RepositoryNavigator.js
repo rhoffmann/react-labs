@@ -1,5 +1,5 @@
 import React from 'react';
-import NavLink from '../global/NavLink';
+import Alert from '../global/Alert';
 
 export default React.createClass({
 
@@ -25,18 +25,23 @@ export default React.createClass({
   render() {
     return (
       <div>
-        <h2>Navigate Repositories</h2>
-        <ul className="repos-list">
-          <li><NavLink to="/repos/rackt">Rackt</NavLink></li>
-          <li><NavLink to="/repos/facebook">Facebook</NavLink></li>
-          <li><NavLink to="/repos/rhoffmann">rhoffmann</NavLink></li>
-        </ul>
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" placeholder="userName" /> / {' '}
-          <button type="submit">Go</button>
-        </form>
+        <div className="row">
+          <div className="col-xs-6">
+            <div className="well">
+              <h4>Look up repos by username</h4>
+              <form onSubmit={this.handleSubmit}>
+                <div className="input-group">
+                  <input type="text" className="form-control" placeholder="github username" />
+                  <span className="input-group-btn">
+                    <button className="btn btn-default" type="submit">Go</button>
+                  </span>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
         <div className="repo-section">
-          { this.props.children }
+          { this.props.children || <Alert type="info" message="look for a user name" /> }
         </div>
       </div>
     );

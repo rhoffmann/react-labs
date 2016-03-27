@@ -2,6 +2,8 @@ import React from 'react';
 import reqwest from 'reqwest';
 import { compose, composeWithPromise } from 'react-komposer';
 import RepositoryList from './RepositoryList';
+import Spinner from '../global/Spinner';
+import LoadingError from '../global/LoadingError';
 
 const reposCache = {};
 
@@ -17,7 +19,6 @@ const onPropsChange = (props) => {
     };
 
     if (reposCache[ userName ]) {
-      console.log(`cache hit for ${userName}`);
       resolveWithCache(userName);
     } else {
       reqwest({
@@ -28,12 +29,21 @@ const onPropsChange = (props) => {
         reposCache[ userName ] = resp;
         resolveWithCache(userName);
       }, (err, msg) => {
-        reject(new Error(err.status));
+        console.dir(err);
+        const errMsg = JSON.parse(err.response).message;
+        reject(new Error(`${err.status}: ${errMsg}`));
       });
     }
   });
 };
 
-const RepositoryListContainer = composeWithPromise(onPropsChange)(RepositoryList);
+const MySpinner = () => (<Spinner text="Loading Repositories..." />);
+
+const RepositoryListContainer = composeWithPromise(
+  onPropsChange,
+  MySpinner,
+  LoadingError
+  // { pure: true }
+)(RepositoryList);
 
 export default RepositoryListContainer;

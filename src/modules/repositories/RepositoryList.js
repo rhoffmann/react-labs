@@ -4,16 +4,30 @@ import NavLink from '../global/NavLink';
 const RepositoryList = ({ children, repositories, userName }) => {
   const reposList = repositories.map((repo) => {
     const repoUrl = `/repos/${userName}/${repo.name}`;
-    return (<li key={repo.name}><NavLink to={repoUrl}>{repo.name}</NavLink></li>);
+    return (
+      <NavLink className="list-group-item" key={repo.name} to={repoUrl}>
+        {repo.name}
+        <span className="badge">{repo.open_issues}</span>
+      </NavLink>
+    );
   });
 
   return (
-    <div>
-      <h2>Repos for {userName}</h2>
-      <ul className="repos-list">
-        { reposList }
-      </ul>
-      <div className="repo-section">
+    <div className="row">
+      <div className="col-xs-4">
+        <div className="panel panel-default">
+          <div className="panel-heading">
+            Repos for {userName}
+          </div>
+          <div className="panel-body">
+            <div className="list-group">
+              { reposList }
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div className="col-xs-8">
         { children }
       </div>
     </div>

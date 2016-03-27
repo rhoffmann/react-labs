@@ -1,12 +1,10 @@
 import React from 'react';
 import classnames from 'classnames';
 
-const Message = (props) => {
-  const classes = classnames('message', `message--${props.type}`);
+const Message = ({ type, message }) => {
+  const classes = classnames('alert', `alert-${type}`);
   return (
-    <div className={classes}>
-      {props.message}
-    </div>
+    <div className={classes}>{message}</div>
   );
 };
 

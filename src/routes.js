@@ -5,7 +5,7 @@ import Home from './modules/pages/Home';
 import About from './modules/pages/About';
 import RepositoryNavigator from './modules/repositories/RepositoryNavigator';
 import RepositoryListContainer from './modules/repositories/RepositoryListContainer';
-import Repository from './modules/repositories/Repository';
+import RepositoryContainer from './modules/repositories/RepositoryContainer';
 
 export default (
   <Route path="/" component={App}>
@@ -13,7 +13,7 @@ export default (
     <Redirect from="/repositories/*" to="/repos" />
     <Route path="/repos" component={RepositoryNavigator}>
       <Route path=":userName" component={RepositoryListContainer}>
-        <Route path=":repoName" component={Repository} />
+        <Route path=":repoName" component={RepositoryContainer} />
       </Route>
     </Route>
     <Route path="/about" component={About} />
