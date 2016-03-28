@@ -14,6 +14,7 @@ const rootRoute = {
     childRoutes: [
       require('./routes/Repos'),
       require('./routes/Todos'),
+      require('./routes/Fundamentals'),
       require('./routes/About')
     ]
   }]

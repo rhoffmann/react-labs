@@ -1,5 +1,5 @@
-import NavLink from './NavLink';
-import Icon from './Icon';
+import NavLink from 'global/NavLink';
+import Icon from 'global/Icon';
 import React from 'react';
 
 const homeLinkParams = {
@@ -7,7 +7,7 @@ const homeLinkParams = {
   query: { foo: 'bar' }
 };
 
-const Nav = () =>
+const Navigation = () =>
   <nav className="navbar navbar-default">
     <div className="navbar-header">
       <NavLink className="navbar-brand" to={homeLinkParams} onlyActiveOnIndex>
@@ -17,8 +17,9 @@ const Nav = () =>
     <ul className="nav navbar-nav" role="navigation">
       <li><NavLink to="/repos">Repos</NavLink></li>
       <li><NavLink to="/todos">Todos</NavLink></li>
+      <li><NavLink to="/fundamentals">Fundamentals</NavLink></li>
       <li><NavLink to="/about">About</NavLink></li>
     </ul>
   </nav>;
 
-export default Nav;
+export default Navigation;

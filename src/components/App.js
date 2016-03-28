@@ -1,5 +1,5 @@
 import React from 'react';
-import Navigation from 'global/Nav';
+import Navigation from './Navigation';
 
 const App = (props) => {
   const queryStuff = Object.keys(props.location.query).map(q =>
