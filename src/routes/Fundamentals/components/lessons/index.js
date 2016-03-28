@@ -10,5 +10,13 @@ export default [
   {
     path: '09-component-lifecycle',
     component: require('./09-Component-Lifecycle').default
+  },
+  {
+    path: '11-component-updating',
+    component: require('./11-Component-Updating').default
+  },
+  {
+    path: '12-higher-order-components',
+    component: require('./12-Higher-Order-Components').default
   }
 ];
