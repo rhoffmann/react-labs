@@ -14,12 +14,12 @@ export default React.createClass({
     );
   },
   routerWillLeave(nextLocation) {
-    return `leaving home for ${nextLocation.pathname}`;
+    return `leaving about for ${nextLocation.pathname}`;
   },
   render() {
     return (
       <div>
-        <h2>Home</h2>
+        <h2>About</h2>
       </div>
     );
   }

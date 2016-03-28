@@ -3,3 +3,5 @@ bundle.js
 node_modules
 .idea
 *.log
+public/
+src/config.js

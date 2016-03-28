@@ -1,27 +1,20 @@
 import React from 'react';
-import Alert from '../global/Alert';
+import Alert from 'global/Alert';
 
 export default React.createClass({
-
   propTypes: {
     children: React.PropTypes.object
-    // list: React.PropTypes.object,
-    // detail: React.PropTypes.object
   },
-
   contextTypes: {
     router: React.PropTypes.object
   },
-
   handleSubmit(event) {
     event.preventDefault();
     const userName = event.target.elements[ 0 ].value;
     const path = `/repos/${userName}`;
-
     this.context.router.push(path); // var 2, recognize context
     return true;
   },
-
   render() {
     return (
       <div>

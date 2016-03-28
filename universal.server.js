@@ -1,3 +1,9 @@
+// FIXME:
+
+// this does currently not work with react router require.ensure and webpack chunks.
+// it creates multiple server chunks for each require. have to figure out how to prevent this.
+// meanwhile use simple express server to serve public directory in server.js
+
 // server imports
 import express from 'express';
 import path from 'path';
@@ -7,7 +13,7 @@ import compression from 'compression';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
-import routes from './source/routes';
+import routes from './src/routes';
 
 // le server
 
