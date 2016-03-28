@@ -5,7 +5,7 @@ const ReactFundamentals = (props) =>
   <div>
     <h2>React Fundamentals</h2>
     <ReactFundamentalsNav />
-    <div className="row">
+    <div className="row" style={ { padding: '20px' } }>
       <div className="col-xs-12">
         { props.children }
       </div>

@@ -21,7 +21,8 @@
     "react-dom": "^0.14.7",
     "react-komposer": "^1.4.1",
     "react-router": "^2.0.0",
-    "redux": "^3.3.1"
+    "redux": "^3.3.1",
+    "rgb-hex": "^1.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.5.1",

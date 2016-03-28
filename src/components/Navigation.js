@@ -11,7 +11,7 @@ const Navigation = () =>
   <nav className="navbar navbar-default">
     <div className="navbar-header">
       <NavLink className="navbar-brand" to={homeLinkParams} onlyActiveOnIndex>
-        <Icon type="heart" /> React
+        React <Icon type="heart" /> Labs
       </NavLink>
     </div>
     <ul className="nav navbar-nav" role="navigation">

@@ -1,10 +1,12 @@
+import lessons from './components/lessons';
+
 module.exports = {
   path: 'fundamentals',
   component: require('./components/ReactFundamentals').default,
-  childRoutes: [
-    {
-      path: '06-owner-ownee',
-      component: require('./components/06-Owner-Ownee').default
-    }
-  ]
+  childRoutes: lessons.map((c) => {
+    return {
+      path: c.path,
+      component: c.component
+    };
+  })
 };
