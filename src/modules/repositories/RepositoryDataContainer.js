@@ -1,43 +1,23 @@
 import React from 'react';
-import reqwest from 'reqwest';
 import { composeWithPromise } from 'react-komposer';
 import RepositoryData from './RepositoryData';
 import Spinner from '../global/Spinner';
 import LoadingError from '../global/LoadingError';
-
-const reposCache = {};
+import createCachedRequest from './cachedRequest';
 
 const onPropsChange = (props) => {
   const userName = props.params.userName;
   const repoName = props.params.repoName;
   const cacheKey = `${userName}/${repoName}`;
 
-  return new Promise((resolve, reject) => {
-    const resolveWithCache = (key) => {
-      return resolve({
-        repoData: reposCache[ key ],
-        repoName,
-        userName
-      });
-    };
+  const repo = createCachedRequest(`https://api.github.com/repos/${userName}/${repoName}`);
 
-    if (reposCache[ cacheKey ]) {
-      resolveWithCache(cacheKey);
-    } else {
-      reqwest({
-        url: `https://api.github.com/repos/${userName}/${repoName}`,
-        type: 'json',
-        method: 'get'
-      }).then((resp) => {
-        reposCache[ cacheKey ] = resp;
-        resolveWithCache(cacheKey);
-      }, (err, msg) => {
-        const errMsg = JSON.parse(err.response).message;
-        reject(new Error(`${err.status}: ${errMsg}`));
-      }).catch((reason) =>
-        reject(new Error(reason))
-      );
-    }
+  return repo(cacheKey).then((data) => {
+    return {
+      repoData: data,
+      repoName,
+      userName
+    };
   });
 };
 

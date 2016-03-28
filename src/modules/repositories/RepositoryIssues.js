@@ -1,9 +1,16 @@
 import React from 'react';
 
+// const md = require('markdown-it')({
+//   html: true,
+//   linkify: true,
+//   typographer: true
+// });
+
 const RepositoryIssues = ({ issues, repoName, userName }) => {
   const issuesList = issues.map((issue) => {
+    // const bodyHTML = md.render(issue.body);
     return (
-      <a href="{issue.url}" target="_blank" className="list-group-item">
+      <a href={issue.html_url} target="_blank" className="list-group-item">
         <h4 className="list-group-item-heading">
           <span className="label label-default">#{issue.number}</span>
           &nbsp;{issue.title}
@@ -20,9 +27,9 @@ const RepositoryIssues = ({ issues, repoName, userName }) => {
         Issues
       </div>
       <div className="panel-body">
-        <div className="list-group">
-          { issues ? issuesList : 'no open issues' }
-        </div>
+      </div>
+      <div className="list-group">
+        { issues ? issuesList : 'no open issues' }
       </div>
     </div>
   );

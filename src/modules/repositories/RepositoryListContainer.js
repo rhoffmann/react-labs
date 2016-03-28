@@ -4,35 +4,17 @@ import { compose, composeWithPromise } from 'react-komposer';
 import RepositoryList from './RepositoryList';
 import Spinner from '../global/Spinner';
 import LoadingError from '../global/LoadingError';
-
-const reposCache = {};
+import createCachedRequest from './cachedRequest';
 
 const onPropsChange = (props) => {
   const userName = props.params.userName;
+  const repos = createCachedRequest(`https://api.github.com/users/${userName}/repos`);
 
-  return new Promise((resolve, reject) => {
-    const resolveWithCache = (user) => {
-      return resolve({
-        userName: user,
-        repositories: reposCache[ user ]
-      });
+  return repos(userName).then((data) => {
+    return {
+      repositories: data,
+      userName
     };
-
-    if (reposCache[ userName ]) {
-      resolveWithCache(userName);
-    } else {
-      reqwest({
-        url: `https://api.github.com/users/${userName}/repos`,
-        type: 'json',
-        method: 'get'
-      }).then((resp) => {
-        reposCache[ userName ] = resp;
-        resolveWithCache(userName);
-      }, (err, msg) => {
-        const errMsg = JSON.parse(err.response).message;
-        reject(new Error(`${err.status}: ${errMsg}`));
-      });
-    }
   });
 };
 
