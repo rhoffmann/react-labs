@@ -8,6 +8,11 @@ module.exports = {
     filename: 'server.bundle.js'
   },
 
+  resolve: {
+    root: path.resolve('./src'),
+    extensions: ['', '.js', '.jsx']
+  },
+  
   target: 'node',
 
   externals: fs.readdirSync( path.resolve(__dirname, 'node_modules') ).concat([

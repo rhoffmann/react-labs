@@ -1,4 +1,3 @@
-
 import React from 'react';
 import RepositoryDataContainer from './RepositoryDataContainer';
 import RepositoryIssuesContainer from './RepositoryIssuesContainer';

@@ -1,24 +1,25 @@
 import React from 'react';
 import { composeWithPromise } from 'react-komposer';
 import RepositoryData from './RepositoryData';
-import Spinner from '../global/Spinner';
-import LoadingError from '../global/LoadingError';
-import createCachedRequest from './cachedRequest';
+import Spinner from 'global/Spinner';
+import LoadingError from 'global/LoadingError';
+import createCachedRequest from 'lib/cachedGithubRequest';
+
+const cacheReq = createCachedRequest('repo');
 
 const onPropsChange = (props) => {
   const userName = props.params.userName;
   const repoName = props.params.repoName;
   const cacheKey = `${userName}/${repoName}`;
 
-  const repo = createCachedRequest(`https://api.github.com/repos/${userName}/${repoName}`);
-
-  return repo(cacheKey).then((data) => {
-    return {
-      repoData: data,
-      repoName,
-      userName
-    };
-  });
+  return cacheReq(`/repos/${userName}/${repoName}`, cacheKey)
+    .then((data) => {
+      return {
+        repoData: data,
+        userName,
+        repoName
+      };
+    });
 };
 
 const MySpinner = () => (<Spinner text="Loading Repo..." />);

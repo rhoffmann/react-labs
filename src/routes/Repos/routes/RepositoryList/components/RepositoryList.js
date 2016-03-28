@@ -1,12 +1,16 @@
 import React from 'react';
-import NavLink from '../global/NavLink';
+import NavLink from 'global/NavLink';
+import { isCached } from 'lib/cachedGithubRequest';
 
 const RepositoryList = ({ children, repositories, userName }) => {
   const reposList = repositories.map((repo) => {
+    const cacheKey = `${userName}/${repo.name}`;
+    const repoIsCached = isCached('repo', cacheKey);
     const repoUrl = `/repos/${userName}/${repo.name}`;
     return (
       <NavLink className="list-group-item" key={repo.name} to={repoUrl}>
-        {repo.name}
+        { repoIsCached ? <span className="label label-success">c</span> : '' }
+        &nbsp;{repo.name}
         <span className="badge">{repo.open_issues}</span>
       </NavLink>
     );

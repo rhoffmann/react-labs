@@ -10,7 +10,7 @@ const RepositoryIssues = ({ issues, repoName, userName }) => {
   const issuesList = issues.map((issue) => {
     // const bodyHTML = md.render(issue.body);
     return (
-      <a href={issue.html_url} target="_blank" className="list-group-item">
+      <a key={issue.id} href={issue.html_url} target="_blank" className="list-group-item">
         <h4 className="list-group-item-heading">
           <span className="label label-default">#{issue.number}</span>
           &nbsp;{issue.title}
@@ -21,6 +21,11 @@ const RepositoryIssues = ({ issues, repoName, userName }) => {
     );
   });
 
+  const noIssues = () =>
+    <div className="list-group-item">
+      <p className="list-group-item-text">no open issues</p>
+    </div>;
+
   return (
     <div className="panel panel-default">
       <div className="panel-heading">
@@ -29,7 +34,7 @@ const RepositoryIssues = ({ issues, repoName, userName }) => {
       <div className="panel-body">
       </div>
       <div className="list-group">
-        { issues ? issuesList : 'no open issues' }
+        { issues.length ? issuesList : noIssues() }
       </div>
     </div>
   );
