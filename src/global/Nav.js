@@ -1,4 +1,5 @@
 import NavLink from './NavLink';
+import Icon from './Icon';
 import React from 'react';
 
 const homeLinkParams = {
@@ -9,7 +10,8 @@ const homeLinkParams = {
 const Nav = () =>
   <nav className="navbar navbar-default">
     <div className="navbar-header">
-      <NavLink className="navbar-brand" to={homeLinkParams} onlyActiveOnIndex>Gettohub Issues
+      <NavLink className="navbar-brand" to={homeLinkParams} onlyActiveOnIndex>
+        <Icon type="heart" /> React
       </NavLink>
     </div>
     <ul className="nav navbar-nav" role="navigation">

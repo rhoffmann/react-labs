@@ -7,7 +7,7 @@ const App = (props) => {
   );
 
   return (
-    <div>
+    <div className="application">
       <Navigation />
       <div className="container page-content">
         { props.children }

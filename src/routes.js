@@ -4,7 +4,7 @@ import App from './components/App';
 import Home from './components/Home';
 
 const rootRoute = {
-  component: 'div',
+  // component: 'div',
   childRoutes: [{
     path: '/',
     indexRoute: {
