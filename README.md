@@ -6,6 +6,8 @@ this is an experimenting space for the react ecosystem
 ## TODO
 
 - [x] refactor github fetching / caching logic inside container components in common functionality, this all works very similar.
+- [ ] rewrite production server to support code splitting
+- [ ] update server to support url segments with dots
 
 ## Starting Up
 
