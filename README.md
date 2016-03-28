@@ -5,7 +5,7 @@ this is an experimenting space for the react ecosystem
 
 ## TODO
 
-- [ ] refactor github fetching / caching logic inside container components in common functionality, this all works very similar.
+- [x] refactor github fetching / caching logic inside container components in common functionality, this all works very similar.
 
 ## Starting Up
 
@@ -54,12 +54,12 @@ Set up Gulp: (i do not like to sass-loader and asset-loader with webpack)
 
 #### Libraries:
 - [x] [react]()
-- [ ] [react-router](https://github.com/reactjs/react-router)
+- [x] [react-router](https://github.com/reactjs/react-router)
 - [ ] [react-reselect](https://github.com/reactjs/reselect)
 - [ ] [react-hyperscript](https://github.com/mlmorg/react-hyperscript) (no JSX)
 - [ ] [react-hyperscript-helpers](https://www.npmjs.com/package/react-hyperscript-helpers)
 - [ ] [redux](http://redux.js.org/) for application state and reducer
-- [ ] [axios](https://github.com/mzabriskie/axios) for async requests
+- [x] [axios](https://github.com/mzabriskie/axios) for async requests
 - [ ] [rxjs]()
 
 #### Testing
