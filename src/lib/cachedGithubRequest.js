@@ -1,4 +1,3 @@
-// import reqwest from 'reqwest';
 import axios from 'axios';
 import { GITHUB_OAUTH_TOKEN } from '../config';
 

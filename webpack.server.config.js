@@ -13,6 +13,13 @@ module.exports = {
     extensions: ['', '.js', '.jsx']
   },
 
+  loaders: [
+    {
+      test: /\.json$/,
+      loader: 'json-loader'
+    }
+  ],
+
   target: 'node',
 
   // externals: fs.readdirSync( path.resolve(__dirname, 'node_modules') ).concat([

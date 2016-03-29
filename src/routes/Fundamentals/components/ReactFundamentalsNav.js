@@ -16,8 +16,4 @@ const ReactFundamentalsNav = (props) => {
   );
 };
 
-// ReactFundamentalsNav.contextTypes = {
-//   router: RouterPropTypes.router,
-// };
-
 export default ReactFundamentalsNav;
