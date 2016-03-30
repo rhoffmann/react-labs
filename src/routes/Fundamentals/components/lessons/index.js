@@ -22,5 +22,9 @@ export default [
   {
     path: '13-composable-components',
     component: require('./13-Composable-Components').default
+  },
+  {
+    path: '15-jsx-transpiler',
+    component: require('./15-JSX-Transpiler').default
   }
 ];

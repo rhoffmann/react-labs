@@ -30,6 +30,7 @@ const NumInput = React.createClass({
           max={this.props.max}
           step={this.props.step}
           className="form-control"
+          value={this.props.value}
           defaultValue={this.props.value}
           onChange={this.props.update}
         />

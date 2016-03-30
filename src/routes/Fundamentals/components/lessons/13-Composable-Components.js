@@ -1,30 +1,43 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import NumInput from './comp/NumInput';
+import UserListContainer from './comp/UserListContainer';
 
 const Component = React.createClass({
   getInitialState() {
     return {
-      red: 0
+      limit: -1,
+      green: 0
     };
   },
   update(e) {
     this.setState({
-      red: ReactDOM.findDOMNode(this.refs.red.refs.input).value
+      limit: ReactDOM.findDOMNode(this.refs.limit.refs.input).value,
+      green: ReactDOM.findDOMNode(this.refs.green.refs.input).value
     });
   },
   render() {
     return (
       <div className="col-xs-6">
-        <NumInput ref="red"
+        <NumInput ref="limit"
+          min={-1}
+          max={10}
+          step={1}
+          label="limit"
+          type="range"
+          update={this.update}
+          value={+this.state.limit}
+        />
+        <NumInput ref="green"
           min={0}
           max={255}
           step={0.1}
           label="green"
-          type="range"
+          type="number"
           update={this.update}
-          value={+this.state.red}
+          value={+this.state.green}
         />
+        <UserListContainer limit={this.state.limit} />
       </div>
     );
   }
