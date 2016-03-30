@@ -2,9 +2,9 @@ const path = require('path');
 
 module.exports = function (config) {
   config.set({
-    browsers: ['Chrome'],
+    browsers: ['PhantomJS' /* ,'Chrome',  'Safari', 'Firefox' */],
     singleRun: true,
-    frameworks: ['mocha', 'chai'],
+    frameworks: ['mocha'],
     files: [
       'tests.webpack.js'
     ],
@@ -13,15 +13,21 @@ module.exports = function (config) {
     },
     plugins: [
       'karma-chrome-launcher',
+      'karma-firefox-launcher',
+      'karma-safari-launcher',
+      'karma-phantomjs-launcher',
       'karma-webpack',
-      'karma-chai',
       'karma-sourcemap-loader',
-      'karma-mocha'
+      'karma-mocha',
+      'karma-mocha-reporter'
     ],
-    reporters: ['dots'],
+    reporters: ['mocha'],
     webpack: {
       devtool: 'inline-source-map',
       module: {
+        noParse: [
+          /node_modules\/sinon/,
+        ],
         loaders: [
           {
             test: /\.jsx?$/,
@@ -37,6 +43,7 @@ module.exports = function (config) {
         root: path.resolve('./src'),
         extensions: ['', '.js', '.jsx']
       },
+      watch: true
     },
     webpackServer: {
       noInfo: true

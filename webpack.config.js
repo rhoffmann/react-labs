@@ -27,6 +27,7 @@ const common = {
     publicPath: '/',
   },
   module: {
+    
     preLoaders: [
       {
         test: /\.jsx?$/,

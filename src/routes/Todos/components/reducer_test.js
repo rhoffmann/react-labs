@@ -25,6 +25,7 @@ describe('reducer', () => {
       counter(1, { type: 'INCREMENT' })
     ).toEqual(2);
   });
+
   it('decrements', () => {
     expect(
       counter(2, { type: 'DECREMENT' })

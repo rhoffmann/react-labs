@@ -1,6 +1,8 @@
 import React from 'react';
 import store from './store';
 import { INCREMENT, DECREMENT } from './actions';
+import Counter from './Counter';
+
 
 const Todos = React.createClass({
   getInitialState() {
@@ -26,9 +28,10 @@ const Todos = React.createClass({
     return (
       <div>
         <h2>Todos</h2>
-        <h3>{this.state.number}</h3>
-        <button onClick={this.increment} className="btn btn-default">+</button>
-        <button onClick={this.decrement} className="btn btn-default">-</button>
+        <Counter value={this.state.number}
+          onIncrement={this.increment}
+          onDecrement={this.decrement}
+        />
       </div>
     );
   }

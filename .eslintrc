@@ -10,6 +10,9 @@
     "no-param-reassign": [2, { "props": false }],
     "react/prefer-es6-class": 0
   },
+  "env": {
+    "mocha": true
+  },
   "ecmaFeatures": {
   },
   "globals": {
