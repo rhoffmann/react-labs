@@ -93,9 +93,6 @@ if (TARGET === 'production') {
     },
     plugins: [
       new webpack.HotModuleReplacementPlugin()
-      // new NpmInstallPlugin({
-      //   save: true
-      // })
     ]
   });
 }

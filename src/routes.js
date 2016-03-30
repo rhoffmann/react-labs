@@ -13,8 +13,8 @@ const rootRoute = {
     component: App,
     childRoutes: [
       require('./routes/Repos'),
-      require('./routes/Todos'),
       require('./routes/Fundamentals'),
+      require('./routes/Todos'),
       require('./routes/About')
     ]
   }]
