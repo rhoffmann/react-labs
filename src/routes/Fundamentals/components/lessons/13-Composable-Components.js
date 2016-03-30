@@ -19,15 +19,6 @@ const Component = React.createClass({
   render() {
     return (
       <div className="col-xs-6">
-        <NumInput ref="limit"
-          min={-1}
-          max={10}
-          step={1}
-          label="limit"
-          type="range"
-          update={this.update}
-          value={+this.state.limit}
-        />
         <NumInput ref="green"
           min={0}
           max={255}
@@ -36,6 +27,15 @@ const Component = React.createClass({
           type="number"
           update={this.update}
           value={+this.state.green}
+        />
+        <NumInput ref="limit"
+          min={-1}
+          max={10}
+          step={1}
+          label="limit"
+          type="range"
+          update={this.update}
+          value={+this.state.limit}
         />
         <UserListContainer limit={this.state.limit} />
       </div>

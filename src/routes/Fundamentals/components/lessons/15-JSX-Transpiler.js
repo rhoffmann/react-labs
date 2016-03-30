@@ -4,18 +4,36 @@ import ReactDOM from 'react-dom';
 // import transformRuntime from 'babel-plugin-transform-runtime';
 const babel = require('babel-standalone');
 
+const defaultJSX = `
+  const App = (props) => {
+    return (
+      <div className="peng">
+        <a href="#"
+          notrendered="x"
+          onClick={update}></a>
+      {/* this is a comment */}
+      </div>
+    );
+  };
+`;
+
 const Component = React.createClass({
   getInitialState() {
     return {
-      input: '/* add your jsx here */',
+      input: defaultJSX,
+      // input: '',
       output: '',
       error: ''
     };
+  },
+  componentDidMount() {
+    this.update();
   },
   update(e) {
     const code = ReactDOM.findDOMNode(this.refs.jsx).value;
     try {
       this.setState({
+        error: '',
         output: babel.transform(code, {
           presets: ['es2015', 'react']
         }).code
@@ -27,9 +45,12 @@ const Component = React.createClass({
     }
   },
   render() {
+    const errorMsg = this.state.error
+      ? <div className="alert alert-warning">{this.state.error}</div>
+      : '';
+
     return (
-      <div>
-        <header>{this.state.error}</header>
+      <div className="jsx-transpiler">
         <div className="container">
           <div className="row">
             <div className="col-xs-6">
@@ -37,10 +58,13 @@ const Component = React.createClass({
                 onChange={this.update}
                 defaultValue={this.state.input}
                 id="jsx"
-                cols="60"
+                cols="50"
                 rows="10"
               >
               </textarea>
+              <footer>
+                {errorMsg}
+              </footer>
             </div>
             <div className="col-xs-6">
               <pre>{this.state.output || 'no output'}</pre>
