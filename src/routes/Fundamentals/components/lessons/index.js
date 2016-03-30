@@ -18,5 +18,9 @@ export default [
   {
     path: '12-higher-order-components',
     component: require('./12-Higher-Order-Components').default
+  },
+  {
+    path: '13-composable-components',
+    component: require('./13-Composable-Components').default
   }
 ];
