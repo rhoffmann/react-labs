@@ -1,7 +1,7 @@
 import React from 'react';
-import store from './store';
-import { INCREMENT, DECREMENT } from './actions';
-import Counter from './Counter';
+import store from './lib/store';
+import { INCREMENT, DECREMENT } from './lib/actions';
+import Counter from './lib/Counter';
 
 
 const Todos = React.createClass({
