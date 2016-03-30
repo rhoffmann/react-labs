@@ -5,7 +5,13 @@ const path = require('path');
 const merge = require('webpack-merge');
 const NpmInstallPlugin = require('npm-install-webpack-plugin');
 
+const TARGET = process.env.NODE_ENV || "dev";
+  // npm_lifecycle_event;
+
 require('dotenv').config();
+const GITHUB_TOKEN = process.env.GITHUB_OAUTH_TOKEN;
+
+process.env.BABEL_ENV = TARGET;
 
 const PATHS = {
   app: __dirname + '/src',
@@ -13,9 +19,6 @@ const PATHS = {
   dist: __dirname + '/public'
 };
 
-const TARGET = process.env.NODE_ENV;
-const GITHUB_TOKEN = process.env.GITHUB_OAUTH_TOKEN;
-  // npm_lifecycle_event;
 
 const common = {
 
