@@ -1,7 +1,7 @@
 import React from 'react';
-import store from './Counter/store';
-import { INCREMENT, DECREMENT } from './Counter/actions';
-import Counter from './Counter/Counter';
+import store from './store';
+import { INCREMENT, DECREMENT } from './actions';
+import Counter from './Counter';
 
 
 const CounterDemo = React.createClass({

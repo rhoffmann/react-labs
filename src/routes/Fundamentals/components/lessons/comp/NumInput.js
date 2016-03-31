@@ -23,7 +23,7 @@ const NumInput = React.createClass({
       ? <span className="input-group-addon">{this.props.label}</span>
       : '';
     return (
-      <div className="input-group">
+      <div className="form-group">
         {labelHtml}
         <input ref="input" type={this.props.type}
           min={this.props.min}
