@@ -1,10 +1,13 @@
 import React from 'react';
 import Link from '../components/Link';
-import store from '../store';
-import { SET_VISIBILITY_FILTER } from '../actions/index';
+import { SET_VISIBILITY_FILTER } from '../actions';
 
 const FilterLink = React.createClass({
+  propTypes: {
+    store: React.PropTypes.object.isRequired
+  },
   componentDidMount() {
+    const { store } = this.props;
     this.unsubscribe = store.subscribe(() => {
       this.forceUpdate();
     });
@@ -13,6 +16,7 @@ const FilterLink = React.createClass({
     this.unsubscribe();
   },
   setFilter(filter) {
+    const { store } = this.props;
     store.dispatch({
       type: SET_VISIBILITY_FILTER,
       filter
@@ -20,6 +24,7 @@ const FilterLink = React.createClass({
   },
   render() {
     const props = this.props;
+    const { store } = props;
     const state = store.getState(); // BAD
     const isActive = props.filter === state.visibilityFilter;
 
@@ -32,8 +37,5 @@ const FilterLink = React.createClass({
     );
   }
 });
-
-FilterLink.propTypes = {
-};
 
 export default FilterLink;

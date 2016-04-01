@@ -1,16 +1,30 @@
 import React from 'react';
+import { ADD_TODO } from './actions';
+import uuid from 'uuid';
 
-const AddTodo = ({ onAddTodo }) => {
+const AddTodo = ({ store }) => {
   let input;
 
+  const addTodo = (value) => {
+    const text = value.trim();
+    if (text === '') {
+      return;
+    }
+    store.dispatch({
+      type: ADD_TODO,
+      id: uuid.v4(),
+      text
+    });
+  };
+
   const handleAddTodo = () => {
-    onAddTodo(input.value);
+    addTodo(input.value);
     input.value = '';
   };
 
   const checkEnter = (e) => {
     if (e.keyCode === 13) {
-      handleAddTodo(input);
+      handleAddTodo();
     }
   };
 
@@ -34,8 +48,7 @@ const AddTodo = ({ onAddTodo }) => {
 };
 
 AddTodo.propTypes = {
-  // todo: React.PropTypes.object.isRequired,
-  onAddTodo: React.PropTypes.func.isRequired
+  store: React.PropTypes.object.isRequired
 };
 
 export default AddTodo;

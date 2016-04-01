@@ -1,7 +1,7 @@
 import {
   SHOW_ALL,
   SET_VISIBILITY_FILTER
-} from '../actions/index';
+} from '../actions';
 
 const visibilityFilter = (state = SHOW_ALL, action) => {
   switch (action.type) {

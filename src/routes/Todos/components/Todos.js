@@ -1,12 +1,13 @@
 import React from 'react';
 // import CounterDemo from './Counter/CounterDemo';
 import TodosApp from './Todos/TodosApp';
+import store from './Todos/store';
 
-const Todos = (props) => {
+const Todos = () => {
   return (
     <div className="todos">
       <h2>Todos</h2>
-      <TodosApp />
+      <TodosApp store={store} />
     </div>
   );
 };

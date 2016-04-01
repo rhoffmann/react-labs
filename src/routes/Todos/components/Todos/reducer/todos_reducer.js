@@ -1,7 +1,7 @@
 import {
   ADD_TODO,
   TOGGLE_TODO
-} from '../actions/index';
+} from '../actions';
 
 const todo = (state, action) => {
   switch (action.type) {
