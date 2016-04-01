@@ -8,12 +8,7 @@ import FilterLink from './FilterLink';
 store.dispatch({
   type: 'ADD_TODO',
   text: 'do something',
-  id: 3
-});
-
-store.dispatch({
-  type: 'SET_VISIBILITY_FILTER',
-  filter: 'SHOW_COMPLETED'
+  id: uuid.v4()
 });
 
 const TodosApp = React.createClass({
@@ -26,7 +21,7 @@ const TodosApp = React.createClass({
   update() {
     this.setState(store.getState());
   },
-  addTodo(e) {
+  addTodo() {
     const text = this.input.value.trim();
     if (text === '') {
       return;
@@ -38,6 +33,11 @@ const TodosApp = React.createClass({
     });
     this.input.value = '';
   },
+  checkEnter(e) {
+    if (e.keyCode === 13) {
+      this.addTodo();
+    }
+  },
   render() {
     const filter = this.state.visibilityFilter;
     return (
@@ -47,7 +47,10 @@ const TodosApp = React.createClass({
             <div className="form-group">
               <div className="input-group">
                 <input ref={ node => { this.input = node; } }
-                  className="form-control" placeholder="todo" type="text"
+                  className="form-control"
+                  placeholder="todo"
+                  type="text"
+                  onKeyDown={(e) => { this.checkEnter(e);} }
                 />
                 <div className="input-group-btn">
                   <button className="btn btn-default" onClick={this.addTodo}>add</button>

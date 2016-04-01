@@ -26,17 +26,19 @@ const TodosList = ({ todos, currentFilter }) => {
     );
 
     return (
-      <button type="button"
-        className={ classNames }
-        key={t.id}
-        onClick={() => {
-          store.dispatch({
-            type: TOGGLE_TODO,
-            id: t.id
-          });
-        }}
-      >
-        <span style={{ textDecoration: t.completed ? 'line-through' : 'none' }}>{t.text}</span>
+      <button type="button" className={ classNames } key={t.id}>
+        <input type="checkbox"
+          onChange={() => {
+            store.dispatch({
+              type: TOGGLE_TODO,
+              id: t.id
+            });
+          }}
+          checked={t.completed}
+        />
+        <span style={{ textDecoration: t.completed ? 'line-through' : 'none' }}>
+          {t.text}
+        </span>
       </button>
     );
   }

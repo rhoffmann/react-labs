@@ -5,6 +5,7 @@ const path = require('path');
 const merge = require('webpack-merge');
 const NpmInstallPlugin = require('npm-install-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const autoprefixer = require('autoprefixer');
 
 const TARGET = process.env.NODE_ENV || "dev"; // this is important for .babelrc hmre
 process.env.BABEL_ENV = TARGET;
@@ -27,7 +28,6 @@ const common = {
     publicPath: '/',
   },
   module: {
-    
     preLoaders: [
       {
         test: /\.jsx?$/,
@@ -47,14 +47,14 @@ const common = {
       },
       {
         test: /\.scss$/,
-        // loader: ExtractTextPlugin.extract('style-loader', 'css-loader', 'sass-loader'),
-        loaders: ['style-loader', 'css-loader', 'sass-loader'],
+        // loader: ExtractTextPlugin.extract('style-loader', 'css-loader', 'sass-loader', 'postcss-loader'),
+        loaders: ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader'],
         include: PATHS.app
       }
     ]
   },
   plugins: [
-    // new ExtractTextPlugin('style.css')
+    // new ExtractTextPlugin('styles.css')
   ],
   resolve: {
     // alias:{ // use to alias require and import paths in js
@@ -66,7 +66,13 @@ const common = {
   eslint: {
     formatter: require('eslint-friendly-formatter'),
     configFile: '.eslintrc'
-  }
+  },
+  sassLoader: {
+    includePaths: [path.resolve(__dirname, "./src")]
+  },
+  postcss: [
+    autoprefixer({ browsers: ['last 2 versions'] })
+  ]
 };
 
 let config;
