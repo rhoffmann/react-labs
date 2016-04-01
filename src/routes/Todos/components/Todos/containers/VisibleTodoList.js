@@ -1,7 +1,9 @@
 import React from 'react';
-import { SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED, TOGGLE_TODO } from '../actions';
+import { connect } from 'react-redux';
+import { SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED, toggleTodo } from '../actions';
 
 import TodoList from '../components/TodoList';
+
 
 export const getVisibleTodos = (todos, filter) => {
   switch (filter) {
@@ -16,37 +18,28 @@ export const getVisibleTodos = (todos, filter) => {
   }
 };
 
-const VisibleTodoList = React.createClass({
-  propTypes: {
-    store: React.PropTypes.object.isRequired
-  },
-  componentDidMount() {
-    const { store } = this.props;
-    this.unsubscribe = store.subscribe(() => {
-      this.forceUpdate();
-    });
-  },
-  componentWillUnmount() {
-    this.unsubscribe();
-  },
-  toggleTodo(id) {
-    const { store } = this.props;
-    return store.dispatch({
-      type: TOGGLE_TODO,
-      id
-    });
-  },
-  render() {
-    // const props = this.props;
-    const { store } = this.props;
-    const state = store.getState(); // BAD
-    return (
-      <TodoList
-        todos={ getVisibleTodos(state.todos, state.visibilityFilter) }
-        onTodoClick={ (id) => this.toggleTodo(id) }
-      />
-    );
-  }
-});
+const mapStateToProps = (state) => {
+  return {
+    todos: getVisibleTodos(
+      state.todos,
+      state.visibilityFilter
+    )
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onTodoClick: (id) => {
+      dispatch(
+        toggleTodo(id)
+      );
+    }
+  };
+};
+
+const VisibleTodoList = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TodoList);
 
 export default VisibleTodoList;

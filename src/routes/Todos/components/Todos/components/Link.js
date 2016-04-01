@@ -6,11 +6,9 @@ const Link = ({ active, children, onClick }) => {
     e.preventDefault();
     onClick();
   };
+  const buttonClasses = classnames('btn', 'btn-default', { active });
   return (
-    <button className={ classnames('btn', 'btn-default', { active }) }
-      type="button"
-      onClick={ clickHandler }
-    >
+    <button className={ buttonClasses } type="button" onClick={ clickHandler }>
       {children}
     </button>
   );

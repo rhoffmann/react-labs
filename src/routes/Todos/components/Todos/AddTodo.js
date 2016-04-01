@@ -1,24 +1,17 @@
 import React from 'react';
-import { ADD_TODO } from './actions';
-import uuid from 'uuid';
+import { connect } from 'react-redux';
+import { addTodo } from './actions';
 
-const AddTodo = ({ store }) => {
+
+let AddTodo = ({ dispatch }) => {
   let input;
 
-  const addTodo = (value) => {
-    const text = value.trim();
-    if (text === '') {
-      return;
-    }
-    store.dispatch({
-      type: ADD_TODO,
-      id: uuid.v4(),
-      text
-    });
-  };
-
   const handleAddTodo = () => {
-    addTodo(input.value);
+    const text = input.value.trim();
+    if (text === '') { return; }
+    dispatch(
+      addTodo(text)
+    );
     input.value = '';
   };
 
@@ -48,7 +41,14 @@ const AddTodo = ({ store }) => {
 };
 
 AddTodo.propTypes = {
-  store: React.PropTypes.object.isRequired
+  dispatch: React.PropTypes.func
 };
+
+// AddTodo = connect(
+//   state => { return {} }, // this is default behaviour, can be passed as null
+//   dispatch => { return { dispatch }; } // this is default behaviour, can be passed as null
+// )(AddTodo);
+
+AddTodo = connect()(AddTodo);
 
 export default AddTodo;
