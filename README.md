@@ -3,15 +3,11 @@ React Labs
 
 this is an experimenting space for the react ecosystem
 
-## TODO
-
-- [x] refactor github fetching / caching logic inside container components in common functionality, this all works very similar.
-- [ ] rewrite production server to support code splitting
-- [ ] update server to support url segments with dots
-
 ## Starting Up
 
 `npm install`
+
+`npm test`
 
 `npm run build`
 
@@ -37,16 +33,18 @@ this is an experimenting space for the react ecosystem
 - [Introducing Le lab with “Monod”, our Markdown Editor](https://tailordev.fr/blog/2016/03/11/introducing-le-lab-with-monod-our-markdown-editor/)
 - [Le Lab, Loading React Components Async](https://tailordev.fr/blog/2016/03/17/loading-dependencies-asynchronously-in-react-components/)
 - [Full Stack React/Redux Tutorial](http://teropa.info/blog/2015/09/10/full-stack-redux-tutorial.html)
-- [Redux with React](http://redux.js.org/docs/basics/UsageWithReact.html)
+- [Redux Docs](http://redux.js.org/docs/)
 - [react-redux-universal-hot-example](https://github.com/erikras/react-redux-universal-hot-example)
+
+https://medium.com/@rajaraodv/the-anatomy-of-a-react-redux-app-759282368c5a#.dws1okf8s
 
 *Egghead Videos*
 
-- [Getting Started with Redux](https://egghead.io/series/getting-started-with-redux)
-- [React Fundamentals](https://egghead.io/series/react-fundamentals) 
-- [Introduction to Reactive Programming](https://egghead.io/series/introduction-to-reactive-programming)
-- [Step-by-step Async JS with RxJS](https://egghead.io/series/step-by-step-async-javascript-with-rxjs)
-
+- [x] [Getting Started with Redux](https://egghead.io/series/getting-started-with-redux)
+- [x] [React Fundamentals](https://egghead.io/series/react-fundamentals) 
+- [x] [React Testing](https://egghead.io/series/react-testing-cookbook)
+- [ ] [Introduction to Reactive Programming](https://egghead.io/series/introduction-to-reactive-programming)
+- [ ] [Step-by-step Async JS with RxJS](https://egghead.io/series/step-by-step-async-javascript-with-rxjs)
 
 ### TODO
 
@@ -63,15 +61,15 @@ Set up Gulp: (i do not like to sass-loader and asset-loader with webpack)
 - [ ] [react-reselect](https://github.com/reactjs/reselect)
 - [ ] [react-hyperscript](https://github.com/mlmorg/react-hyperscript) (no JSX)
 - [ ] [react-hyperscript-helpers](https://www.npmjs.com/package/react-hyperscript-helpers)
-- [ ] [redux](http://redux.js.org/) for application state and reducer
+- [x] [redux](http://redux.js.org/) for application state and reducer
 - [x] [axios](https://github.com/mzabriskie/axios) for async requests
-- [ ] [rxjs]()
 
 #### Testing
 
-- [ ] [mocha], with [webpack/mocha-loader](https://github.com/webpack/mocha-loader)
+- [x] [mocha], with [webpack/mocha-loader](https://github.com/webpack/mocha-loader)
 - [ ] [ava](https://github.com/sindresorhus/ava)
 - [ ] [tape](https://github.com/substack/tape)
 
 #### UI
 - [ ] [react-material-ui](http://www.material-ui.com/#/get-started/prerequisites)
+- [ ] [react-bootstrap](https://react-bootstrap.github.io/components.html#navigation)
