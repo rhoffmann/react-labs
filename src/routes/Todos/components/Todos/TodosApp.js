@@ -1,8 +1,8 @@
 import React from 'react';
 import uuid from 'uuid';
-import { ADD_TODO, SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED } from './actions/index';
+import { ADD_TODO, TOGGLE_TODO, SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED } from './actions/index';
 import store from './store';
-import TodosList from './TodosList';
+import TodoList from './TodoList';
 import FilterLink from './FilterLink';
 
 store.dispatch({
@@ -10,6 +10,19 @@ store.dispatch({
   text: 'do something',
   id: uuid.v4()
 });
+
+const getVisibleTodos = (todos, filter) => {
+  switch (filter) {
+    case SHOW_ALL:
+      return todos;
+    case SHOW_ACTIVE:
+      return todos.filter(t => !t.completed);
+    case SHOW_COMPLETED:
+      return todos.filter(t => t.completed);
+    default:
+      return todos;
+  }
+};
 
 const TodosApp = React.createClass({
   getInitialState() {
@@ -20,6 +33,12 @@ const TodosApp = React.createClass({
   },
   update() {
     this.setState(store.getState());
+  },
+  toggleTodo(id) {
+    return store.dispatch({
+      type: TOGGLE_TODO,
+      id
+    });
   },
   addTodo() {
     const text = this.input.value.trim();
@@ -40,6 +59,7 @@ const TodosApp = React.createClass({
   },
   render() {
     const filter = this.state.visibilityFilter;
+    const visibleTodos = getVisibleTodos(this.state.todos, filter);
     return (
       <div>
         <div className="row">
@@ -68,7 +88,7 @@ const TodosApp = React.createClass({
         </div>
         <div className="row">
           <div className="col-md-6">
-            <TodosList todos={this.state.todos} currentFilter={filter} />
+            <TodoList todos={visibleTodos} onTodoClick={(id) => { this.toggleTodo(id); } } />
           </div>
         </div>
       </div>
