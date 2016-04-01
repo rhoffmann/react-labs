@@ -4,7 +4,9 @@ import { SET_VISIBILITY_FILTER } from '../actions';
 
 const FilterLink = React.createClass({
   propTypes: {
-    store: React.PropTypes.object.isRequired
+    store: React.PropTypes.object.isRequired,
+    filter: React.PropTypes.string.isRequired,
+    children: React.PropTypes.object
   },
   componentDidMount() {
     const { store } = this.props;
@@ -23,16 +25,13 @@ const FilterLink = React.createClass({
     });
   },
   render() {
-    const props = this.props;
-    const { store } = props;
+    const { store, filter, children } = this.props;
     const state = store.getState(); // BAD
-    const isActive = props.filter === state.visibilityFilter;
+    const isActive = filter === state.visibilityFilter;
 
     return (
-      <Link active={isActive}
-        onClick={() => this.setFilter(props.filter) }
-      >
-        {props.children}
+      <Link active={isActive} onClick={() => this.setFilter(filter) } >
+        {children}
       </Link>
     );
   }

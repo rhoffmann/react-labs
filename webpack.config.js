@@ -3,8 +3,8 @@
 const webpack = require('webpack');
 const path = require('path');
 const merge = require('webpack-merge');
-const NpmInstallPlugin = require('npm-install-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+// const NpmInstallPlugin = require('npm-install-webpack-plugin');
+// const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
 const TARGET = process.env.NODE_ENV || "dev"; // this is important for .babelrc hmre
