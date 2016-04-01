@@ -1,28 +1,20 @@
 import React from 'react';
 import uuid from 'uuid';
-import { ADD_TODO, TOGGLE_TODO, SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED } from './actions/index';
-import store from './store';
+import {
+  ADD_TODO,
+  TOGGLE_TODO,
+  SET_VISIBILITY_FILTER
+} from './actions/index';
+import store, { getVisibleTodos } from './store';
 import TodoList from './TodoList';
-import FilterLink from './FilterLink';
+import AddTodo from './AddTodo';
+import TodoFilter from './TodoFilter';
 
 store.dispatch({
   type: 'ADD_TODO',
   text: 'do something',
   id: uuid.v4()
 });
-
-const getVisibleTodos = (todos, filter) => {
-  switch (filter) {
-    case SHOW_ALL:
-      return todos;
-    case SHOW_ACTIVE:
-      return todos.filter(t => !t.completed);
-    case SHOW_COMPLETED:
-      return todos.filter(t => t.completed);
-    default:
-      return todos;
-  }
-};
 
 const TodosApp = React.createClass({
   getInitialState() {
@@ -31,8 +23,11 @@ const TodosApp = React.createClass({
   componentDidMount() {
     store.subscribe(this.update);
   },
-  update() {
-    this.setState(store.getState());
+  setFilter(filter) {
+    store.dispatch({
+      type: SET_VISIBILITY_FILTER,
+      filter
+    });
   },
   toggleTodo(id) {
     return store.dispatch({
@@ -40,8 +35,8 @@ const TodosApp = React.createClass({
       id
     });
   },
-  addTodo() {
-    const text = this.input.value.trim();
+  addTodo(value) {
+    const text = value.trim();
     if (text === '') {
       return;
     }
@@ -50,45 +45,29 @@ const TodosApp = React.createClass({
       id: uuid.v4(),
       text
     });
-    this.input.value = '';
   },
-  checkEnter(e) {
-    if (e.keyCode === 13) {
-      this.addTodo();
-    }
+  update() {
+    this.setState(store.getState());
   },
   render() {
-    const filter = this.state.visibilityFilter;
-    const visibleTodos = getVisibleTodos(this.state.todos, filter);
+    const visibilityFilter = this.state.visibilityFilter;
     return (
       <div>
         <div className="row">
           <div className="col-md-6">
-            <div className="form-group">
-              <div className="input-group">
-                <input ref={ node => { this.input = node; } }
-                  className="form-control"
-                  placeholder="todo"
-                  type="text"
-                  onKeyDown={(e) => { this.checkEnter(e);} }
-                />
-                <div className="input-group-btn">
-                  <button className="btn btn-default" onClick={this.addTodo}>add</button>
-                </div>
-              </div>
-            </div>
-            <div className="form-group">
-              <div className="btn-group" role="group">
-                <FilterLink filter={SHOW_ALL} currentFilter={filter}>all</FilterLink>
-                <FilterLink filter={SHOW_ACTIVE} currentFilter={filter}>active</FilterLink>
-                <FilterLink filter={SHOW_COMPLETED} currentFilter={filter}>completed</FilterLink>
-              </div>
-            </div>
+            <AddTodo onAddTodo={ (value) => this.addTodo(value) } />
+            <TodoFilter
+              visibilityFilter={visibilityFilter}
+              onFilterClick={ (filter) => this.setFilter(filter) }
+            />
           </div>
         </div>
         <div className="row">
           <div className="col-md-6">
-            <TodoList todos={visibleTodos} onTodoClick={(id) => { this.toggleTodo(id); } } />
+            <TodoList
+              todos={ getVisibleTodos(this.state.todos, visibilityFilter) }
+              onTodoClick={ (id) => { this.toggleTodo(id); } }
+            />
           </div>
         </div>
       </div>
