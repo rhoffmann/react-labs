@@ -37,6 +37,8 @@ this is an experimenting space for the react ecosystem
 - [Introducing Le lab with “Monod”, our Markdown Editor](https://tailordev.fr/blog/2016/03/11/introducing-le-lab-with-monod-our-markdown-editor/)
 - [Le Lab, Loading React Components Async](https://tailordev.fr/blog/2016/03/17/loading-dependencies-asynchronously-in-react-components/)
 - [Full Stack React/Redux Tutorial](http://teropa.info/blog/2015/09/10/full-stack-redux-tutorial.html)
+- [Redux with React](http://redux.js.org/docs/basics/UsageWithReact.html)
+- [react-redux-universal-hot-example](https://github.com/erikras/react-redux-universal-hot-example)
 
 *Egghead Videos*
 
@@ -57,6 +59,7 @@ Set up Gulp: (i do not like to sass-loader and asset-loader with webpack)
 #### Libraries:
 - [x] [react]()
 - [x] [react-router](https://github.com/reactjs/react-router)
+- [x] [react-redux](https://github.com/reactjs/react-router)
 - [ ] [react-reselect](https://github.com/reactjs/reselect)
 - [ ] [react-hyperscript](https://github.com/mlmorg/react-hyperscript) (no JSX)
 - [ ] [react-hyperscript-helpers](https://www.npmjs.com/package/react-hyperscript-helpers)
