@@ -5,7 +5,7 @@ const TodoList = ({ todos, onTodoClick }) => {
   return (
     <div className="list-group">
       { todos.map(todo =>
-        <Todo key={todo.id} todo={todo} onClick={() => onTodoClick(todo.id) } />
+        <Todo key={todo.id} {...todo} onClick={() => onTodoClick(todo.id) } />
       )}
     </div>
   );

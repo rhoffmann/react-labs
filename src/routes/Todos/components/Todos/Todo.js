@@ -1,24 +1,26 @@
 import classnames from 'classnames';
 import React from 'react';
 
-const Todo = ({ todo, onClick }) => {
+const Todo = ({ id, completed, text, onClick }) => {
   const classNames = classnames(
     'list-group-item',
-    { disabled: todo.completed }
+    { disabled: completed }
   );
 
   return (
-    <button type="button" onClick={onClick} className={ classNames } key={todo.id}>
-      <input type="checkbox" readOnly checked={todo.completed} />
-        <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
-          {todo.text}
+    <button type="button" onClick={onClick} className={ classNames } key={id}>
+      <input type="checkbox" readOnly checked={completed} />
+        <span style={{ textDecoration: completed ? 'line-through' : 'none' }}>
+          {text}
         </span>
     </button>
   );
 };
 
 Todo.propTypes = {
-  todo: React.PropTypes.object.isRequired,
+  id: React.PropTypes.string.isRequired,
+  text: React.PropTypes.string.isRequired,
+  completed: React.PropTypes.bool.isRequired,
   onClick: React.PropTypes.func.isRequired
 };
 
