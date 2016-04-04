@@ -3,6 +3,7 @@ import TestUtils from 'react-addons-test-utils';
 import expect from 'expect';
 import expectJSX from 'expect-jsx';
 import Todo from './Todo';
+import sinon from 'sinon/pkg/sinon';
 
 expect.extend(expectJSX);
 
@@ -25,8 +26,22 @@ describe('CoolComponent', () => {
 });
 
 describe('Todo', () => {
-  xit('should render correctly', () => {
-    renderer.render(<Todo />);
-    // const renderer = TestUtils.createRenderer();
+  const todoProps = {
+    id: 'abcd',
+    text: 'some task',
+    completed: false,
+    onClick: sinon.spy()
+  };
+
+  let output;
+
+  beforeEach(() => {
+    renderer.render(<Todo {...todoProps} />);
+    output = renderer.getRenderOutput();
+  })
+
+  it('should be a button (why? :)', () => {
+    expect(output.type).toEqual('button');
+    console.log(output);
   });
 });
