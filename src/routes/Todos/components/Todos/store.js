@@ -1,7 +1,13 @@
 import { createStore } from 'redux';
 import reducer from './reducer/index';
 
-function configureStore(initialState = {}) {
+function configureStore(initialState = {
+  todos: [{
+    id: '1',
+    text: 'one task',
+    completed: false
+  }]
+}) {
   const store = createStore(reducer, initialState,
     window.devToolsExtension ? window.devToolsExtension() : undefined
   );

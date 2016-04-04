@@ -1,9 +1,7 @@
 import React from 'react';
 import counter from './reducer';
-
 // import TestUtils from 'react/lib/ReactTestUtils';
 import { expect } from 'chai';
-// import expect from 'expect';
 
 describe('reducer', () => {
   it('does nothing with unknown actions', () => {

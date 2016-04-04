@@ -1,13 +1,22 @@
 import React, { PropTypes } from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import Todo from './Todo';
 
 const TodoList = ({ todos, onTodoClick }) => {
   return (
-    <div className="list-group">
+    <ReactCSSTransitionGroup
+      component="div"
+      className="list-group"
+      transitionName="example"
+      transitionAppear
+      transitionAppearTimeout={1000}
+      transitionEnterTimeout={300}
+      transitionLeaveTimeout={300}
+    >
       { todos.map(todo =>
         <Todo key={todo.id} {...todo} onClick={() => onTodoClick(todo.id) } />
       )}
-    </div>
+    </ReactCSSTransitionGroup>
   );
 };
 

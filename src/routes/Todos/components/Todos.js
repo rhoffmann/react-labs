@@ -1,6 +1,4 @@
 import React from 'react';
-// import CounterDemo from './Counter/CounterDemo';
-// import Provider from './lib/Provider';
 import { Provider } from 'react-redux';
 import TodosApp from './Todos/TodosApp';
 import store from './Todos/store';
