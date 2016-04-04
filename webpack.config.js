@@ -89,7 +89,7 @@ if (TARGET === 'production') {
   config = merge(common, {
     devtool: 'eval-source-map',
     devServer: {
-      contentBase: PATHS.dist,
+      contentBase: '.',
       historyApiFallback: true,
       hot: true,
       inline: true,

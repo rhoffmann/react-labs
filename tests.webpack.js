@@ -1,3 +1,2 @@
-'use strict';
-var context = require.context('./src', true, /[-_](test|spec)\.jsx?$/);
+var context = require.context('./src', true, /[-_\.](test|spec)\.jsx?$/);
 context.keys().forEach(context);
