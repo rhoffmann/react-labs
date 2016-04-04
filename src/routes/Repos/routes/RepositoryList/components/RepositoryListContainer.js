@@ -9,7 +9,6 @@ const cacheReq = createCachedRequest('repos');
 
 const onPropsChange = (props) => {
   const userName = props.params.userName;
-
   return cacheReq(`/users/${userName}/repos`, userName)
     .then((data) => {
       return {

@@ -5,14 +5,9 @@
 // meanwhile use simple express server to serve public directory in server.js
 
 // server imports
-// import express from 'express';
-// import path from 'path';
-// import compression from 'compression';
-
 const express = require('express');
 const path = require('path');
 const compression = require('compression');
-
 
 // react imports
 // import React from 'react';
