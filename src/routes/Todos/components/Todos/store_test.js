@@ -18,7 +18,16 @@ import {
   SET_VISIBILITY_FILTER
 } from './actions';
 
-describe('store', () => {
+describe('appStore', () => {
+  it('should initialize', () => {
+    const actual = store.getState();
+    const expected = {
+      todos: [],
+      visibilityFilter: SHOW_ALL
+    };
+    expect(actual).toEqual(expected);
+  });
+
   describe('todos', () => {
     it('should work with a serie of actions', () => {
       const actions = [

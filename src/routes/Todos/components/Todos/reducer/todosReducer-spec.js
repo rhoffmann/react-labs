@@ -2,8 +2,11 @@ import React from 'react';
 import deepFreeze from 'deep-freeze-strict';
 import expect from 'expect';
 
-import todos from './todos_reducer';
-import { ADD_TODO, TOGGLE_TODO } from '../actions';
+import todos from './todosReducer';
+import {
+  ADD_TODO,
+  TOGGLE_TODO
+} from '../actions';
 
 const stateAddBefore = [];
 
