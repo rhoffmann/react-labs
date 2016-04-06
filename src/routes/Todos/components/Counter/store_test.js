@@ -5,7 +5,6 @@ import { INCREMENT, DECREMENT } from './actions';
 import expect, { createSpy, spyOn, isSpy } from 'expect';
 
 describe('store', () => {
-
   it('it starts with an initial state', () => {
     expect(
       store.getState()
@@ -13,14 +12,14 @@ describe('store', () => {
   });
 
   it('increments', () => {
-    store.dispatch({type: INCREMENT});
+    store.dispatch({ type: INCREMENT });
     expect(
       store.getState()
     ).toEqual(1);
   });
 
   it('decrements', () => {
-    store.dispatch({type: DECREMENT});
+    store.dispatch({ type: DECREMENT });
     expect(
       store.getState()
     ).toEqual(0);
@@ -32,13 +31,12 @@ describe('store', () => {
     };
 
     // let spy = createSpy();
-    let spy = spyOn(handlers, 'storeSubscriber').andCallThrough();
+    const spy = spyOn(handlers, 'storeSubscriber').andCallThrough();
 
     // store.subscribe(spy);
     store.subscribe(handlers.storeSubscriber);
-    store.dispatch({type: INCREMENT});
+    store.dispatch({ type: INCREMENT });
 
     expect(spy).toHaveBeenCalled();
   });
-
 });

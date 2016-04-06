@@ -13,6 +13,10 @@ const CoolComponent = ({ greeting }) => (
   </div>
 );
 
+CoolComponent.propTypes = {
+  greeting: React.PropTypes.string
+};
+
 const renderer = TestUtils.createRenderer();
 
 describe('CoolComponent', () => {
@@ -61,7 +65,7 @@ describe('Todo', () => {
       renderer.render(<Todo {...completeTodo} />);
       const output = renderer.getRenderOutput();
       // using hard coded props drilldown
-      const checkbox = output.props.children[0];
+      const checkbox = output.props.children[ 0 ];
       expect(checkbox.type).toEqual('input');
       expect(checkbox.props.checked).toEqual(true);
     });

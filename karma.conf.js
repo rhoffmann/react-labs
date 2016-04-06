@@ -27,7 +27,14 @@ module.exports = function (config) {
       devtool: 'inline-source-map',
       module: {
         noParse: [
-          /node_modules\/sinon/,
+          // /node_modules\/sinon/,
+        ],
+        preLoaders: [
+          {
+            test: /[-_\.](test|spec)\.jsx?$/,
+            loader: 'eslint-loader',
+            include: path.resolve('./src')
+          }
         ],
         loaders: [
           {
@@ -44,7 +51,11 @@ module.exports = function (config) {
         root: path.resolve('./src'),
         extensions: ['', '.js', '.jsx']
       },
-      watch: true
+      watch: true,
+      eslint: {
+        formatter: require('eslint-friendly-formatter'),
+        configFile: '.eslintrc'
+      },
     },
     webpackServer: {
       noInfo: true

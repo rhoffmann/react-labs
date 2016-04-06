@@ -30,9 +30,7 @@ describe('store', () => {
         addTodoById(4, 'woot')
       ];
 
-      actions.forEach((action) => {
-        store.dispatch(action);
-      });
+      actions.forEach((action) => store.dispatch(action));
 
       const actual = store.getState();
       const expected = {
@@ -68,7 +66,7 @@ describe('store', () => {
       store.dispatch({
         type: SET_VISIBILITY_FILTER,
         filter: SHOW_COMPLETED
-      })
+      });
       const actual = store.getState();
       expect(actual.visibilityFilter).toEqual(SHOW_COMPLETED);
     });
@@ -79,5 +77,5 @@ describe('store', () => {
       const actual = store.getState();
       expect(actual.visibilityFilter).toEqual(SHOW_ACTIVE);
     });
-  })
+  });
 });

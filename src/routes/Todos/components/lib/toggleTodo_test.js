@@ -10,11 +10,12 @@ const toggleTodo = (todo) => {
     ...todo,
     completed: !todo.completed
   };
-}
+};
 
 
 describe('todo', () => {
-  let completeTodo, incompleteTodo;
+  let completeTodo;
+  let incompleteTodo;
 
   beforeEach(() => {
     incompleteTodo = {
@@ -27,7 +28,7 @@ describe('todo', () => {
       text: 'Learn Redux',
       completed: true
     };
-  })
+  });
 
   it('toggles', () => {
     deepFreeze(completeTodo);
@@ -35,5 +36,4 @@ describe('todo', () => {
     expect(toggleTodo(completeTodo).completed).toEqual(false);
     expect(toggleTodo(incompleteTodo).completed).toEqual(true);
   });
-
 });
