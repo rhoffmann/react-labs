@@ -2,10 +2,7 @@ import React from 'react';
 import store from './store';
 import { INCREMENT, DECREMENT } from './actions';
 
-// https://github.com/webpack/webpack/issues/304
-// import sinon from 'sinon';
-import sinon from 'sinon/pkg/sinon';
-import expect from 'expect';
+import expect, { createSpy, spyOn, isSpy } from 'expect';
 
 describe('store', () => {
 
@@ -30,10 +27,18 @@ describe('store', () => {
   });
 
   it('notifies its subscribers', () => {
-    let spy = sinon.spy();
-    store.subscribe(spy);
+    const handlers = {
+      storeSubscriber: () => { }
+    };
+
+    // let spy = createSpy();
+    let spy = spyOn(handlers, 'storeSubscriber').andCallThrough();
+
+    // store.subscribe(spy);
+    store.subscribe(handlers.storeSubscriber);
     store.dispatch({type: INCREMENT});
-    sinon.assert.calledOnce(spy);
+
+    expect(spy).toHaveBeenCalled();
   });
 
 });

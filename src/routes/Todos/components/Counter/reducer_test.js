@@ -1,6 +1,5 @@
 import React from 'react';
 import counter from './reducer';
-// import TestUtils from 'react/lib/ReactTestUtils';
 import expect from 'expect';
 
 describe('reducer', () => {

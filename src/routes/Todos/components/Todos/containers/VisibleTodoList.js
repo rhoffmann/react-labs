@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED, toggleTodo } from '../actions';
+import { SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED } from '../actions';
+import { toggleTodo } from '../actionCreator';
 
 import TodoList from '../components/TodoList';
 

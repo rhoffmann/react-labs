@@ -3,7 +3,6 @@ import TestUtils from 'react-addons-test-utils';
 import expect from 'expect';
 import expectJSX from 'expect-jsx';
 import Todo from './Todo';
-import sinon from 'sinon/pkg/sinon';
 
 expect.extend(expectJSX);
 
@@ -31,7 +30,7 @@ describe('Todo', () => {
   let completeTodo;
 
   beforeEach(() => {
-    spy = sinon.spy();
+    spy = expect.createSpy();
     incompleteTodo = {
       id: 'abcd',
       text: 'some task',
@@ -74,7 +73,7 @@ describe('Todo', () => {
     renderer.render(<Todo {...completeTodo} />);
     const output = renderer.getRenderOutput();
     TestUtils.Simulate.click(output);
-    sinon.assert.calledOnce(spy);
+    expect(spy).toHaveBeenCalledOnce();
   });
 
   it('should be a button (why? :)', () => {

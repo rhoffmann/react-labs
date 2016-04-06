@@ -1,6 +1,7 @@
 import {
   ADD_TODO,
-  TOGGLE_TODO
+  TOGGLE_TODO,
+  REMOVE_TODO
 } from '../actions';
 
 const todo = (state, action) => {
@@ -19,6 +20,7 @@ const todo = (state, action) => {
         ...state,
         completed: !state.completed
       };
+
     default:
       return state;
   }
@@ -33,6 +35,8 @@ const todos = (state = [], action) => {
       ];
     case TOGGLE_TODO:
       return state.map(t => todo(t, action));
+    case REMOVE_TODO:
+      return state.filter(t => t.id !== action.id);
     default:
       return state;
   }
