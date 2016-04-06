@@ -1,5 +1,5 @@
 import React from 'react';
-import { expect } from 'chai';
+import expect from 'expect';
 import deepFreeze from 'deep-freeze-strict';
 
 const toggleTodo = (todo) => {
@@ -32,8 +32,8 @@ describe('todo', () => {
   it('toggles', () => {
     deepFreeze(completeTodo);
     deepFreeze(incompleteTodo);
-    expect(toggleTodo(completeTodo).completed).to.equal(false);
-    expect(toggleTodo(incompleteTodo).completed).to.equal(true);
+    expect(toggleTodo(completeTodo).completed).toEqual(false);
+    expect(toggleTodo(incompleteTodo).completed).toEqual(true);
   });
 
 });

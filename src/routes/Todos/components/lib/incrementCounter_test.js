@@ -1,5 +1,5 @@
 import React from 'react';
-import { expect } from 'chai';
+import expect from 'expect';
 import deepFreeze from 'deep-freeze-strict';
 
 const addCounter = (list) => {
@@ -31,7 +31,7 @@ describe('counter', () => {
 
     deepFreeze(listBefore);
 
-    expect(addCounter(listBefore)).to.eql(listAfter);
+    expect(addCounter(listBefore)).toEqual(listAfter);
   });
 
   it('removes counters', () => {
@@ -40,7 +40,7 @@ describe('counter', () => {
 
     deepFreeze(listBefore);
 
-    expect(removeCounter(listBefore, 1)).to.eql(listAfter);
+    expect(removeCounter(listBefore, 1)).toEqual(listAfter);
   });
 
 
@@ -50,6 +50,6 @@ describe('counter', () => {
 
     deepFreeze(listBefore);
 
-    expect(incrementCounter(listBefore, 1)).to.eql(listAfter);
+    expect(incrementCounter(listBefore, 1)).toEqual(listAfter);
   });
 });

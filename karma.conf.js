@@ -4,7 +4,7 @@ module.exports = function (config) {
   config.set({
     browsers: ['PhantomJS' /* ,'Chrome',  'Safari', 'Firefox' */],
     singleRun: true,
-    frameworks: ['mocha', 'chai'],
+    frameworks: ['mocha'],
     files: [
       'tests.webpack.js'
     ],
@@ -18,7 +18,7 @@ module.exports = function (config) {
       'karma-phantomjs-launcher',
       'karma-webpack',
       'karma-sourcemap-loader',
-      'karma-chai',
+      // 'karma-chai',
       'karma-mocha',
       'karma-mocha-reporter'
     ],

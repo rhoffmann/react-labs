@@ -58,13 +58,21 @@ describe('Todo', () => {
     it('should have a disabled class if completed', () => {
       expect(renderTodo(completeTodo)).toEqual(true);
     });
+    it('should show a checked checkbox', () => {
+      renderer.render(<Todo {...completeTodo} />);
+      const output = renderer.getRenderOutput();
+      // using hard coded props drilldown
+      const checkbox = output.props.children[0];
+      expect(checkbox.type).toEqual('input');
+      expect(checkbox.props.checked).toEqual(true);
+    });
   });
 
+  // http://stackoverflow.com/questions/32407585/react-testing-event-handlers-in-react-shallow-rendering-unit-tests
+  // does not work currently
   xit('onClick event should fire if clicked on', () => {
     renderer.render(<Todo {...completeTodo} />);
     const output = renderer.getRenderOutput();
-    // http://stackoverflow.com/questions/32407585/react-testing-event-handlers-in-react-shallow-rendering-unit-tests
-    // console.log(output.props.children[0]);
     TestUtils.Simulate.click(output);
     sinon.assert.calledOnce(spy);
   });
@@ -73,5 +81,12 @@ describe('Todo', () => {
     renderer.render(<Todo {...incompleteTodo} />);
     const output = renderer.getRenderOutput();
     expect(output.type).toEqual('button');
+  });
+
+  it('should have the correct text', () => {
+    renderer.render(<Todo {...completeTodo} />);
+    const output = renderer.getRenderOutput();
+    // using expect-jsx
+    expect(output).toIncludeJSX('some task');
   });
 });
