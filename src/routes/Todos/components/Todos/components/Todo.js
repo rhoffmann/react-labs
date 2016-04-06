@@ -8,7 +8,7 @@ const Todo = ({ id, completed, text, onClick }) => {
   );
 
   return (
-    <button type="button" onClick={onClick} ref="todo" className={ classNames } key={id}>
+    <button type="button" onClick={onClick} className={ classNames } key={id}>
       <input type="checkbox" readOnly checked={completed} />
         <span style={{ textDecoration: completed ? 'line-through' : 'none' }}>
           {text}

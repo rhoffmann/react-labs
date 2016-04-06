@@ -31,6 +31,8 @@
     "react-router": "^2.0.0",
     "reducer": "^0.19.2",
     "redux": "^3.3.1",
+    "redux-storage": "^4.0.0",
+    "redux-storage-engine-localstorage": "^1.0.2",
     "rgb-hex": "^1.0.0",
     "uuid": "^2.0.1"
   },

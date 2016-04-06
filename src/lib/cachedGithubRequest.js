@@ -15,12 +15,7 @@ const githubRequest = axios.create({
 });
 
 export function isCached(topic, key) {
-  if (typeof cache[ topic ] !== 'undefined') {
-    if (typeof cache[ topic ][ key ] !== 'undefined') {
-      return true;
-    }
-  }
-  return false;
+  return (typeof cache[ topic ] !== 'undefined') && (typeof cache[ topic ][ key ] !== 'undefined');
 }
 
 function createCachedRequest(topic) {

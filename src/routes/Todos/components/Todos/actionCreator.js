@@ -36,7 +36,7 @@ export const addTodoById = (id, value) => {
   const text = value.trim();
   return {
     type: ADD_TODO,
-    id: id,
+    id,
     text
   };
 };
