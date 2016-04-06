@@ -35,24 +35,27 @@ describe('store', () => {
       });
 
       const actual = store.getState();
-      const expected = [
-        {
-          id: 1,
-          text: 'some text',
-          completed: false
-        },
-        {
-          id: 3,
-          text: 'some even more text',
-          completed: true
-        },
-        {
-          id: 4,
-          text: 'woot',
-          completed: false
-        }
-      ];
-      expect(actual.todos).toEqual(expected);
+      const expected = {
+        todos: [
+          {
+            id: 1,
+            text: 'some text',
+            completed: false
+          },
+          {
+            id: 3,
+            text: 'some even more text',
+            completed: true
+          },
+          {
+            id: 4,
+            text: 'woot',
+            completed: false
+          }
+        ],
+        visibilityFilter: SHOW_ALL
+      };
+      expect(actual).toEqual(expected);
     });
   });
 
