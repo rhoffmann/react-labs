@@ -3,7 +3,7 @@ import reducers from './reducer/index';
 import * as storage from 'redux-storage';
 import createEngine from 'redux-storage-engine-localstorage';
 
-// reducers are already combineReducer'd in reducer/index
+// reducers are already combined in reducer/index
 const reducer = storage.reducer(reducers);
 const engine = createEngine('my-todos');
 const middleware = storage.createMiddleware(engine);
@@ -24,5 +24,3 @@ export const loadStore = () => {
 };
 
 export default store;
-//
-// export default store;
