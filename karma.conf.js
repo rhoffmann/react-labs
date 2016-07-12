@@ -4,7 +4,7 @@ module.exports = function (config) {
   config.set({
     browsers: ['PhantomJS' /* ,'Chrome',  'Safari', 'Firefox' */],
     singleRun: true,
-    frameworks: ['mocha', 'chai'],
+    frameworks: ['mocha'],
     files: [
       'tests.webpack.js'
     ],
@@ -18,7 +18,7 @@ module.exports = function (config) {
       'karma-phantomjs-launcher',
       'karma-webpack',
       'karma-sourcemap-loader',
-      'karma-chai',
+      // 'karma-chai',
       'karma-mocha',
       'karma-mocha-reporter'
     ],
@@ -27,7 +27,14 @@ module.exports = function (config) {
       devtool: 'inline-source-map',
       module: {
         noParse: [
-          /node_modules\/sinon/,
+          // /node_modules\/sinon/,
+        ],
+        preLoaders: [
+          {
+            test: /[-_\.](test|spec)\.jsx?$/,
+            loader: 'eslint-loader',
+            include: path.resolve('./src')
+          }
         ],
         loaders: [
           {
@@ -44,7 +51,11 @@ module.exports = function (config) {
         root: path.resolve('./src'),
         extensions: ['', '.js', '.jsx']
       },
-      watch: true
+      watch: true,
+      eslint: {
+        formatter: require('eslint-friendly-formatter'),
+        configFile: '.eslintrc'
+      },
     },
     webpackServer: {
       noInfo: true

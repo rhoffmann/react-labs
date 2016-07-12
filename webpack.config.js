@@ -10,9 +10,6 @@ const autoprefixer = require('autoprefixer');
 const TARGET = process.env.NODE_ENV || "dev"; // this is important for .babelrc hmre
 process.env.BABEL_ENV = TARGET;
 
-// require('dotenv').config();
-// const GITHUB_TOKEN = process.env.GITHUB_OAUTH_TOKEN;
-
 const PATHS = {
   app: __dirname + '/src',
   entry: __dirname + '/src/main.js',

@@ -29,7 +29,6 @@ const RepositoryList = ({ children, repositories, userName }) => {
             </div>
           </div>
         </div>
-
       </div>
       <div className="col-xs-8">
         { children }

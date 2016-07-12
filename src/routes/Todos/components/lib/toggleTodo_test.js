@@ -1,5 +1,5 @@
 import React from 'react';
-import { expect } from 'chai';
+import expect from 'expect';
 import deepFreeze from 'deep-freeze-strict';
 
 const toggleTodo = (todo) => {
@@ -10,11 +10,12 @@ const toggleTodo = (todo) => {
     ...todo,
     completed: !todo.completed
   };
-}
+};
 
 
 describe('todo', () => {
-  let completeTodo, incompleteTodo;
+  let completeTodo;
+  let incompleteTodo;
 
   beforeEach(() => {
     incompleteTodo = {
@@ -27,13 +28,12 @@ describe('todo', () => {
       text: 'Learn Redux',
       completed: true
     };
-  })
+  });
 
   it('toggles', () => {
     deepFreeze(completeTodo);
     deepFreeze(incompleteTodo);
-    expect(toggleTodo(completeTodo).completed).to.equal(false);
-    expect(toggleTodo(incompleteTodo).completed).to.equal(true);
+    expect(toggleTodo(completeTodo).completed).toEqual(false);
+    expect(toggleTodo(incompleteTodo).completed).toEqual(true);
   });
-
 });
