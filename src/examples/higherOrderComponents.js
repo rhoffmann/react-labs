@@ -163,8 +163,8 @@ export const modifyTree = (WrappedComponent) => {
 // DEBUGGING
 
 export const HOCDebugger = (WrappedComponent) => {
-  static displayName = `HOCDebugger(${getDisplayName(WrappedComponent)})`;
   return class II extends WrappedComponent {
+    static displayName = `HOCDebugger(${getDisplayName(WrappedComponent)})`;
     render() {
       return (
         <div>
